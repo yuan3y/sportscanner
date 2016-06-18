@@ -1,4 +1,4 @@
-<form action="thecage.php" method="GET">
+<form action="thecage-bukittimah.php" method="GET">
 <input type='date' name='date'>
 
 <select name='time'>
