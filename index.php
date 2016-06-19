@@ -1,5 +1,12 @@
-<form action="thecage-bukittimah.php" method="GET">
-<input type='date' name='date'>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sportscanner</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+</head>
+<form action="search.php" method="GET">
+<input type='date' name='date' value='<?php echo date("Y-m-d");?>'>
 
 <select name='time'>
   <option value="07:00">7:00 am</option>
@@ -23,3 +30,4 @@
 
 <input type="submit" value="Submit">
 </form>
+</html>
