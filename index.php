@@ -28,6 +28,6 @@
   <option value="23:00">11:00 pm</option>
 </select>
 
-<input type="submit" value="Submit">
+<input type="submit" value="Search">
 </form>
 </html>
