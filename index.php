@@ -7,7 +7,6 @@
 </head>
 <form action="search.php" method="GET">
 <input type='date' name='date' value='<?php echo date("Y-m-d");?>'>
-
 <select name='time'>
   <option value="07:00">7:00 am</option>
   <option value="08:00">8:00 am</option>
@@ -27,7 +26,6 @@
   <option value="22:00">10:00 pm</option>
   <option value="23:00">11:00 pm</option>
 </select>
-
 <input type="submit" value="Search">
 </form>
 </html>

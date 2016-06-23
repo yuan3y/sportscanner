@@ -13,7 +13,6 @@ $time = $_GET['time'];
 ?>
 <form action="search.php" method="GET">
 <input type='date' name='date' value='<?php echo $date;?>'>
-
 <select name='time'>
   <option <?php if($time == '07:00'){echo("selected");}?> value="07:00">7:00 am</option>
   <option <?php if($time == '08:00'){echo("selected");}?> value="08:00">8:00 am</option>
@@ -33,7 +32,6 @@ $time = $_GET['time'];
   <option <?php if($time == '22:00'){echo("selected");}?> value="22:00">10:00 pm</option>
   <option <?php if($time == '23:00'){echo("selected");}?> value="23:00">11:00 pm</option>
 </select>
-
 <input type="submit" value="Search">
 </form>
 <br>
@@ -73,6 +71,7 @@ foreach($html_bukittimah->find('a') as $a) {
 //include('thecage-bukittimah.php');
 //include('thecage-kallang.php');
 
+include('offside.php');
 include('hyfa.php');
 
 ?>

@@ -75,6 +75,8 @@ for ($i = 0; $i < $node_count; $i++) {
             }
         }
     }
+    curl_multi_remove_handle($master, $curl_arr[$i]);
+    curl_close($curl_arr[$i]);
 }
 
 if (isset($bucket[$time.":00"]))
@@ -84,5 +86,7 @@ else
 foreach ($bucket as $key=>$value){
     echo "<a href='http://hyfa.com.sg/book-pitch/'>Hyfa - Pitch ".substr($key,0,5).'</a><br/>';
 }
+
+curl_multi_close($master);
 
 ?>
