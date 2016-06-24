@@ -53,16 +53,17 @@ foreach($html_kallang->find('a') as $a) {
 }
 
 
-$html_bukittimah = file_get_html('http://www.thecage.com.sg/booking_bukittimah5/week_view.php?date='.$date);
-
+$html_bukittimah11 = file_get_html('http://www.thecage.com.sg/booking_bukittimah11/day_view.php?date='.$date);
 // grab all links from site and spot the date
 $links = array();
-foreach($html_bukittimah->find('a') as $a) {
-	$href=$a->href;
 
- if (strpos($href,$date) && strpos($href,$time)){
+foreach($html_bukittimah11->find('a') as $a) {
+	$href=(string)$a->href;
+	//echo $href;
+//NOTE the bukit timah 11 aside has a bug where the day is wrong. so we only search through the time
+ if (strpos($href,$time)){
  	$links[] = $href;
- 	echo "<a href='http://www.thecage.com.sg/booking_bukittimah5/day_view.php?date=" . $date . "' target='_blank'>The Cage - Bukit Timah Pitch ";
+ 	echo "<a href='http://www.thecage.com.sg/booking_bukittimah11/day_view.php?date=" . $date . "' target='_blank'>The Cage - Bukit Timah (11 aside) Pitch ";
  	echo substr($href, strpos($href,"loc=loc")+7,1);
  	echo "</a><br/>";
  }
