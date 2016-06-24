@@ -46,7 +46,7 @@ foreach($html_kallang->find('a') as $a) {
 
  if (strpos($href,$date) && strpos($href,$time)){
  	$links[] = $href;
- 	echo "<a href='http://www.thecage.com.sg/booking_calendar/day_view.php?date=" . $date . "' target='_blank'>The Cage - Kallang Pitch ";
+ 	echo "<a href='http://www.thecage.com.sg/booking_calendar/day_view.php?date=" . $date . "' target='_blank'>The Cage - Kallang (5 aside) Pitch ";
  	echo substr($href, strpos($href,"loc=loc")+7,1);
  	echo "</a><br/>";
  }
