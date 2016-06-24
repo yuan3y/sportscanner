@@ -81,7 +81,7 @@ for ($i = 0; $i < $node_count; $i++) {
 
 if (isset($bucket[$time.":00"]))
     foreach($bucket[$time.":00"] as $time)
-    echo '<a href="http://hyfa.com.sg/book-pitch/">Hyfa - Pitch '.$time.'</a><br/>';
+    echo "<a href='http://hyfa.com.sg/book-pitch/' target='_blank'>Hyfa - Pitch ".$time."</a><br/>";
 //else
 //foreach ($bucket as $key=>$value){
 //    echo "<a href='http://hyfa.com.sg/book-pitch/'>Hyfa - Pitch ".substr($key,0,5).'</a><br/>';
