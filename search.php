@@ -62,7 +62,7 @@ foreach($html_bukittimah->find('a') as $a) {
 
  if (strpos($href,$date) && strpos($href,$time)){
  	$links[] = $href;
- 	echo "<a href='http://www.thecage.com.sg/booking_bukittimah11/day_view.php?date=" . $date . "' target='_blank'>The Cage - Bukit Timah Court ";
+ 	echo "<a href='http://www.thecage.com.sg/booking_bukittimah5/day_view.php?date=" . $date . "' target='_blank'>The Cage - Bukit Timah Court ";
  	echo substr($href, strpos($href,"loc=loc")+7,1);
  	echo "</a><br/>";
  }
