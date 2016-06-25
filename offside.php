@@ -1,7 +1,5 @@
 <?php
-$date = $_GET['date'];
-$time = $_GET['time'];
-
+// number of pitches
 $node_count = 4;
 $curl_arr = array();
 $master = curl_multi_init();
@@ -43,23 +41,29 @@ for ($i = 0; $i < $node_count; $i++) {
     $results[] = curl_multi_getcontent($curl_arr[$i]);
 }
 
+
+// For each pitch..
 for ($i = 0; $i < $node_count; $i++) {
+    // each time finds an available, add to checkcount. if checkcount matches the number of hours in range ($range), will print result
+    $checkCount = 0;
     $response = $results[$i];
 	$json_array = json_decode($response, TRUE);
-	$availability = $json_array[$date]['hours'][$time]['status'];
 
-	if ($availability == 'available'){
-		echo "<a href='http://offside.com.sg/#section-thomson' target='_blank'>";
-		echo "Offside Pitch " . ($i+1);
-	 	echo "</a><br/>";
-	}
+    foreach ($rangeArray as $key => $value) {
+        $availability = $json_array[$date]['hours'][$value]['status'];
+        if ($availability == "available"){
+            $checkCount++;
+        }
+    }
+        if ($checkCount == $range){
+            echo "<a href='http://offside.com.sg/#section-thomson' target='_blank'>Offside Pitch -  ";
+            echo $i+1;
+            echo "</a><br/>";
+        }
 
-curl_multi_remove_handle($master, $curl_arr[$i]);
-curl_close($curl_arr[$i]);
-
+    curl_multi_remove_handle($master, $curl_arr[$i]);
+    curl_close($curl_arr[$i]);
 }
 
 curl_multi_close($master);
-
-
 ?>
