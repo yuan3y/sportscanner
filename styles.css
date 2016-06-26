@@ -4,7 +4,7 @@
 
 .searchBox {
     width: 300px;
-    padding-top: 30px;
+    padding-top: 40px;
   }
 
 .btn {
@@ -40,7 +40,7 @@
     height: 40px;
     border-radius: 3px;
     overflow: hidden;
-    background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+    background: #fafafa no-repeat 90% 50%;
 }
 
 .searchBoxTime select {
