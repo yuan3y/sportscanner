@@ -88,14 +88,25 @@ for ($i = 1; $i <= $range; $i++) {
 if (count($resultArray) === 1) {
     //print_r($time1);
     foreach ($time1 as $key => $value) {
-        echo "<a href='http://hyfa.com.sg/book-pitch/' target='_blank'>Hyfa - Pitch ".$value."</a><br/>";
+        echo "<a href='http://hyfa.com.sg/book-pitch/' target='_blank'>Hyfa ";
+        if ($value <= 2){
+            echo "(7 aside)";
+        }elseif ($value >=3 && $value <=10) {
+            echo "(5 aside)";
+        }
+        echo " - Pitch ".$value."</a><br/>";
     }
 } else{
     $isect = call_user_func_array('array_intersect', $resultArray);
     //print_r($isect);
     foreach ($isect as $key => $value) {
-        echo "<a href='http://hyfa.com.sg/book-pitch/' target='_blank'>Hyfa - Pitch ".$value."</a><br/>";
-    }
+        echo "<a href='http://hyfa.com.sg/book-pitch/' target='_blank'>Hyfa ";
+        if ($value <= 2){
+            echo "(7 aside)";
+        }elseif ($value >=3 && $value <=10) {
+            echo "(5 aside)";
+        }
+        echo " - Pitch ".$value."</a><br/>";    }
 }
 
 curl_multi_close($master_hyfa);
