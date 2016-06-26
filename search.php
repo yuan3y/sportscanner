@@ -16,7 +16,6 @@ $range = $endTime - $startTime;
 <body>
 <center>
 <div class="searchBox">
-<h1>Find futsal pitches</h1>
 <form action="search.php" method="GET">
 <input type='date' name='date' style="width:295px; font-size:20px; height:40px;" value='<?php echo date("Y-m-d");?>'>
 <br><br>
@@ -59,7 +58,7 @@ $range = $endTime - $startTime;
   <option <?php if($endTime == '24:00'){echo("selected");}?> value="24:00">12 Midnight</option> 
 </select>
 <br><br>
-<input type="submit" value="Search" class="btn">
+<input type="submit" value="Find Available Pitches" class="btn">
 </form>
 <br>
 </div>
