@@ -1,20 +1,13 @@
 <?php
-//error_reporting(E_ALL | E_STRICT);
-//ini_set('display_errors', 1);
-
-$date = $_GET['date'];
-$time = $_GET['time'];
-
 $date = date_format(new DateTime($date), "j+F+Y,l");
+$node_count_hyfa = 10;
 
-$node_count = 12;
+$curl_arr_hyfa = array();
+$master_hyfa = curl_multi_init();
 
-$curl_arr = array();
-$master = curl_multi_init();
-
-for ($i = 0; $i < $node_count; $i++) {
-    $curl_arr[$i] = curl_init();
-    curl_setopt_array($curl_arr[$i], array(
+for ($i = 0; $i < $node_count_hyfa; $i++) {
+    $curl_arr_hyfa[$i] = curl_init();
+    curl_setopt_array($curl_arr_hyfa[$i], array(
         CURLOPT_URL => "http://hyfa.com.sg/book-pitch/PitchSlots",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
@@ -36,23 +29,24 @@ for ($i = 0; $i < $node_count; $i++) {
             "x-requested-with: XMLHttpRequest"
         ),
     ));
-    curl_multi_add_handle($master, $curl_arr[$i]);
+    curl_multi_add_handle($master_hyfa, $curl_arr_hyfa[$i]);
 }
 
 do {
-    curl_multi_exec($master, $running);
+    curl_multi_exec($master_hyfa, $running);
 } while ($running > 0);
 
 
-for ($i = 0; $i < $node_count; $i++) {
-    $results[] = curl_multi_getcontent($curl_arr[$i]);
+for ($i = 0; $i < $node_count_hyfa; $i++) {
+    $results_hyfa[] = curl_multi_getcontent($curl_arr_hyfa[$i]);
 }
-//print_r($results);
+//print_r($results_hyfa);
 
 $bucket = array();
 
-for ($i = 0; $i < $node_count; $i++) {
-    $response = $results[$i];
+// For each pitch...
+for ($i = 0; $i < $node_count_hyfa; $i++) {
+    $response = $results_hyfa[$i];
 
     $res_arr = json_decode($response);
 
@@ -75,18 +69,35 @@ for ($i = 0; $i < $node_count; $i++) {
             }
         }
     }
-    curl_multi_remove_handle($master, $curl_arr[$i]);
-    curl_close($curl_arr[$i]);
+
+    curl_multi_remove_handle($master_hyfa, $curl_arr_hyfa[$i]);
+    curl_close($curl_arr_hyfa[$i]);
 }
 
-if (isset($bucket[$time.":00"]))
-    foreach($bucket[$time.":00"] as $time)
-    echo "<a href='http://hyfa.com.sg/book-pitch/' target='_blank'>Hyfa - Pitch ".$time."</a><br/>";
-//else
-//foreach ($bucket as $key=>$value){
-//    echo "<a href='http://hyfa.com.sg/book-pitch/'>Hyfa - Pitch ".substr($key,0,5).'</a><br/>';
-//}
+$name = 1;
+foreach ($rangeArray as $key => $value) {
+    ${"time$name"} = $bucket[$value.":00"];
+    $name++;
+}
 
-curl_multi_close($master);
+$resultArray = array();
+for ($i = 1; $i <= $range; $i++) {
+    $resultArray[] = ${'time'.$i};
+}
+
+if (count($resultArray) === 1) {
+    //print_r($time1);
+    foreach ($time1 as $key => $value) {
+        echo "<a href='http://hyfa.com.sg/book-pitch/' target='_blank'>Hyfa - Pitch ".$value."</a><br/>";
+    }
+} else{
+    $isect = call_user_func_array('array_intersect', $resultArray);
+    //print_r($isect);
+    foreach ($isect as $key => $value) {
+        echo "<a href='http://hyfa.com.sg/book-pitch/' target='_blank'>Hyfa - Pitch ".$value."</a><br/>";
+    }
+}
+
+curl_multi_close($master_hyfa);
 
 ?>

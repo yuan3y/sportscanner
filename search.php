@@ -74,6 +74,7 @@ include('kallang.php');
 include('bukittimah5.php');
 include('bukittimah11.php');
 include('offside.php');
+include('hyfa.php');
 ?></div>
 
 <script>
