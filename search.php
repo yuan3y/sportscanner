@@ -52,7 +52,7 @@ End:
   <option <?php if($endTime == '21:00'){echo("selected");}?> value="21:00">9:00 pm</option>
   <option <?php if($endTime == '22:00'){echo("selected");}?> value="22:00">10:00 pm</option>
   <option <?php if($endTime == '23:00'){echo("selected");}?> value="23:00">11:00 pm</option> 
-  <option <?php if($endTime == '24:00'){echo("selected");}?> value="07:00">12 Midnight</option>
+  <option <?php if($endTime == '24:00'){echo("selected");}?> value="24:00">12 Midnight</option>
 </select>
 <input type="submit" value="Search">
 </form>
