@@ -20,6 +20,7 @@ $range = $endTime - $startTime;
 <input type='date' name='date' style="width:295px; font-size:20px; height:40px;" value="<?php echo $date;?>">
 <br><br>
 <select name='startTime' class="searchBoxTime">
+  <option disabled>Start</option>
   <option <?php if($startTime == '07:00'){echo("selected");}?> value="07:00">7:00 am</option>
   <option <?php if($startTime == '08:00'){echo("selected");}?> value="08:00">8:00 am</option>
   <option <?php if($startTime == '09:00'){echo("selected");}?> value="09:00">9:00 am</option>
@@ -39,6 +40,7 @@ $range = $endTime - $startTime;
   <option <?php if($startTime == '23:00'){echo("selected");}?> value="23:00">11:00 pm</option>
 </select>
 <select name='endTime' class="searchBoxTime">
+  <option disabled>End</option>
   <option <?php if($endTime == '08:00'){echo("selected");}?> value="08:00">8:00 am</option>
   <option <?php if($endTime == '09:00'){echo("selected");}?> value="09:00">9:00 am</option>
   <option <?php if($endTime == '10:00'){echo("selected");}?> value="10:00">10:00 am</option>
