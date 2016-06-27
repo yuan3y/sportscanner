@@ -17,7 +17,7 @@ $range = $endTime - $startTime;
 <center>
 <div class="searchBox">
 <form action="search.php" method="GET">
-<input type='date' name='date' style="width:295px; font-size:20px; height:40px;" value='<?php echo date("Y-m-d");?>'>
+<input type='date' name='date' style="width:295px; font-size:20px; height:40px;" value='<?php echo $date;?>'>
 <br><br>
 <select name='startTime' class="searchBoxTime">
   <option <?php if($startTime == '07:00'){echo("selected");}?> value="07:00">7:00 am</option>
